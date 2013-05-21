@@ -31,7 +31,11 @@
       <exclude name="**/*.views_default.inc" />
     </patternset>
 
-    <!-- TODO: add contrib/libraries patternset to make it possible to use this for install profiles as well -->
+    <patternset id="contrib">
+      <exclude name="**/contrib/**/*.*" />
+      <exclude name="**/development/**/*.*" />
+      <exclude name="**/libraries/**/*.*" />
+    </patternset>
 
     <patternset id="js">
       <include name="**/*.js" />
@@ -45,14 +49,17 @@
     <fileset id="src.php" dir="${project.basedir}">
       <patternset refid="php"/>
       <patternset refid="generated"/>
+      <patternset refid="contrib"/>
     </fileset>
 
     <fileset id="src.js" dir="${project.basedir}">
       <patternset refid="js" />
+      <patternset refid="contrib"/>
     </fileset>
 
     <fileset id="src.css" dir="${project.basedir}">
       <patternset refid="css" />
+      <patternset refid="contrib"/>
     </fileset>
   </target>
 
