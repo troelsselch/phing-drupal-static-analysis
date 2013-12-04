@@ -3,7 +3,7 @@ Build file: Static analysis of Drupal code
 
 Phing build file with targets for performing static analysis of Drupal code.
 
-Currently used by the [Vagrant Jenkins](https://github.com/wulff/vagrant-jenkins) project.
+Currently used by the [Vagrant Jenkins](https://github.com/achton/vagrant-jenkins) project.
 
 Based on the [Phing Drupal Template](https://github.com/reload/phing-drupal-template) by the good folks at Reload!
 
@@ -41,15 +41,18 @@ This buildfile requries that JShint and CSSlint are available. You can use the f
 
 ### Download and install phing phploc integration
 
-    file { '/opt/phploctask':
-      ensure => directory,
+! Changed sinces fork
+    # Backup phpqatools version of PHPLocTask.php and get one that works.
+    exec { 'backup-phploctask':
+      command => 'mv PHPLocTask.php PHPLocTask.php.bak',
+      cwd     => '/usr/share/php/phing/tasks/ext/phploc',
+      require => Package['phpqatools'],
     }
 
     exec { 'download-phploctask':
-      command => 'wget https://raw.github.com/raphaelstolt/phploc-phing/master/PHPLocTask.php',
-      cwd     => '/opt/phploctask',
-      creates => '/opt/phploctask/PHPLocTask.php',
-      require => File['/opt/phploctask'],
+      command => 'wget https://raw.github.com/phingofficial/phing/master/classes/phing/tasks/ext/phploc/PHPLocTask.php',
+      cwd     => '/usr/share/php/phing/tasks/ext/phploc',
+      require => Exec['backup-phploctask'],
     }
 
 ### Download Drupal codesniffer rules

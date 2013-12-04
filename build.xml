@@ -9,7 +9,7 @@
   <target name="prepare">
     <mkdir dir="${project.basedir}/build" />
 
-    <taskdef name="phploc" classname="PHPLocTask" classpath="/opt/phploctask" />
+    <taskdef name="phploc" classname="PHPLocTask" />
 
     <patternset id="php">
       <include name="**/*.php" />
