@@ -42,6 +42,7 @@ This buildfile requries that JShint and CSSlint are available. You can use the f
 ### Download and install phing phploc integration
 
 ! Changed sinces fork
+
     # Backup phpqatools version of PHPLocTask.php and get one that works.
     exec { 'backup-phploctask':
       command => 'mv PHPLocTask.php PHPLocTask.php.bak',
