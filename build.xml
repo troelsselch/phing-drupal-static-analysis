@@ -237,6 +237,6 @@
   </target>
 
   <target name="analyze-phpcs" depends="prepare">
-    <exec command="phpcs --report=checkstyle --report-file=${project.basedir}/build/checkstyle-codesniffer.xml --standard=Drupal --extensions=php,module,install,inc,profile,test --ignore=*/contrib/*,*/development/*,*.features.*,*.field_group.*,*.layouts.*,*.pages_default.*,*.panelizer.*,*.panels_default.*,*.strongarm.*,*.views_default.* ${project.basedir}" logoutput="true" />
+    <exec command="phpcs --report=checkstyle --report-file='${project.basedir}/build/checkstyle-codesniffer.xml' --standard=Drupal --extensions=php,module,install,inc,profile,test --ignore=*/contrib/*,*/development/*,*.features.*,*.field_group.*,*.layouts.*,*.pages_default.*,*.panelizer.*,*.panels_default.*,*.strongarm.*,*.views_default.* '${project.basedir}'" logoutput="true" />
   </target>
 </project>
